@@ -7,9 +7,10 @@ public class List {
 		head = new Node();
 		head.setNext(null);
 		head.setContain(null);
+		length = -1;
 	}
 	public void add(Object obj){
-		if(length==0){
+		if(length == -1){
 			head.setContain(obj);    //first element
 		}
 		else{
@@ -30,6 +31,7 @@ public class List {
 		boolean found = false;
 		if(head.getContain().equals(obj)){
 			head = head.getNext();
+			length--;
 		}
 		else{
 			while(!found  && curent.getNext()!= null){
@@ -42,11 +44,20 @@ public class List {
 			}
 			if(found | curent.getContain().equals(obj)){
 				previous.setNext(curent.getNext());
+				length--;
 			}
 		}
 	}
 	public Object get(int index){
-		return head.getContain(); //ezt majd kiegesziteni!
+		Node curent = head;	
+		if(length < index){
+			throw new IndexOutOfBoundsException();
+		}
+		while(index != 0){
+			curent = curent.getNext();
+			index --;
+		}
+		return curent.getContain();
 	}
 	public int size(){
 		return length;
