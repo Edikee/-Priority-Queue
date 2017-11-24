@@ -65,7 +65,8 @@ public class Main {
 		nurse.record(new Patient("c","stab")); ;
 		nurse.record(new Patient("f1","broken")); 
 		nurse.record(new Patient("cccc","stab")); ;
- 
+   
+		
 
 		for(int i=0;i<18*3;i++){
 			System.out.println( nurse.getPatient());
