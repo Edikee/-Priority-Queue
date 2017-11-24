@@ -48,10 +48,11 @@ public class PriorityQueue<E> {
 	}
 	
 	public void changePriority(E obj,int priorit){
-		list.remove(obj);
-		priority.remove(priorityMin);
-		searchMin();
-		this.add(obj, priorit);
+		if(list.remove(obj)){
+			priority.remove(priorityMin);
+			searchMin();
+			this.add(obj, priorit);
+		}
 	}
 	
 	public void kiir(){
