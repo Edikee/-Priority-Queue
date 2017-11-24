@@ -17,7 +17,10 @@ public class Nurse {
 		case "stab": priority = 2;break;
 		}
 		prque.add(patient,priority);
-		
+		recordId++;
+	}
+	public Patient getPatient(){
+		return prque.getMin();
 	}
 	public void event(Patient patient, String event){
 		
