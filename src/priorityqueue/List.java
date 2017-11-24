@@ -16,6 +16,25 @@ public class List<E> {
 		head = next;
 		length++;
 	}
+
+	public boolean removeIndexOf(int index){
+ 
+		Node<E> curent = head;	
+		Node<E> previous = head;
+		if(length < index || index < 0){
+			throw new IndexOutOfBoundsException();
+		}
+	
+		while(index != 0){
+			previous = curent;
+			curent = curent.getNext();
+			index --;
+		}
+		previous.setNext(curent.getNext());
+		length--;
+		return true;
+	}
+
 	public boolean remove(E obj){
 		Node<E> curent = head;		
 		Node<E> previous = null;

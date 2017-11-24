@@ -1,5 +1,7 @@
 package priorityqueue;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 public class PriorityQueue<E> {
 	private List<E> list;
 	private List<Integer> priority;
@@ -11,7 +13,7 @@ public class PriorityQueue<E> {
 		list = new List<E>();
 		priority = new List<Integer>();
 		priorityMinIndex = 0;
-		priorityMin = Integer.MAX_VALUE;
+		priorityMin = 50;
 		
 	} 
 	public void add(E obj,Integer priorityNumber){
@@ -31,20 +33,26 @@ public class PriorityQueue<E> {
 	public E getMin(){
 		E value = list.get(priorityMinIndex);
 		list.remove(value);
-		priority.remove(priorityMin);
+		priority.removeIndexOf(priorityMinIndex);
+	 
 		searchMin();
 		return value;
 	}	
 	
 	private void searchMin(){
-		priorityMin = Integer.MAX_VALUE;
+		priorityMin = 50;
+		Integer tmp =  priority.get(0);
 		for(int i=0 ; i< priority.length ; i++){
-			Integer tmp =  priority.get(i);
-			if(priorityMin > tmp){
+			tmp = priority.get(i);
+		
+			if(priorityMin >= tmp){
 				priorityMin = tmp;
 				priorityMinIndex = i;
 			}
+			
 		}
+//		System.out.println(priorityMinIndex);
+	 
 	}
 	
 	public void changePriority(E obj,int priorit){
@@ -64,3 +72,5 @@ public class PriorityQueue<E> {
 	}
  
 }
+
+
