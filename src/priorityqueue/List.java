@@ -10,19 +10,10 @@ public class List<E> {
 		length = -1;
 	}
 	public void add(E obj){
-		if(length == -1){
-			head.setContain(obj);    //first element
-		}
-		else{
-			Node curent = head;		
-			while(curent.getNext()!=null){
-				curent = curent.getNext();
-			}
-			Node next = new Node();
-			next.setContain(obj);
-			next.setNext(null);
-			curent.setNext(next);
-		}
+		Node next = new Node();
+		next.setContain(obj);
+		next.setNext(head);
+		head = next;
 		length++;
 	}
 	public boolean remove(E obj){
@@ -80,6 +71,6 @@ public class List<E> {
 			System.out.println(curent.getContain());
 			curent = curent.getNext();
 		}
-		System.out.println(curent.getContain());
+	 
 	}
 }
