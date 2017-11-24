@@ -23,11 +23,27 @@ public class List {
 			curent.setNext(next);
 		}
 		length++;
-		
-		
 	}
-	public boolean remove(Object obj){
-		return true;
+	public void remove(Object obj){
+		Node curent = head;		
+		Node previous = null;
+		boolean found = false;
+		if(head.getContain().equals(obj)){
+			head = head.getNext();
+		}
+		else{
+			while(!found  && curent.getNext()!= null){
+				if(curent.getContain().equals(obj))
+					found = true;
+				else{
+					previous = curent;
+					curent = curent.getNext();
+				}
+			}
+			if(found | curent.getContain().equals(obj)){
+				previous.setNext(curent.getNext());
+			}
+		}
 	}
 	public Object get(int index){
 		return head.getContain(); //ezt majd kiegesziteni!
