@@ -66,12 +66,5 @@ public class List<E> {
 		return -1;
  
 	}
-	public void kiir(){
-		Node curent = head;	
-		while(curent.getNext()!=null){
-			System.out.println(curent.getContain());
-			curent = curent.getNext();
-		}
-	 
-	}
+ 
 }
