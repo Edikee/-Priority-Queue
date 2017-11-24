@@ -7,7 +7,7 @@ public class List<E> {
 		head = new Node<E>();
 		head.setNext(null);
 		head.setContain(null);
-		length = -1;
+		length = 0;
 	}
 	public void add(E obj){
 		Node next = new Node();
@@ -23,10 +23,11 @@ public class List<E> {
 		if(head.getContain().equals(obj)){
 			head = head.getNext();
 			length--;
+		
 			return true;
 		}
 		else{
-			for(int i=0;i<=this.length;i++){
+			for(int i=0;i<this.length;i++){
 				if(curent.getContain().equals(obj)){
 					previous.setNext(curent.getNext());
 					length--;
@@ -40,7 +41,7 @@ public class List<E> {
 		return false;
 	}
 	public E get(int index){
-		
+	 
 		Node<E> curent = head;	
 		
 		if(length < index || index < 0){
