@@ -55,7 +55,7 @@ public class List<E> {
 		
 		return curent.getContain();
 	}
-	public int get(E obj){
+	public int indexOf(E obj){
 		Node<E> curent = head;		
 		for(int i=0;i<=this.length;i++){
 		
@@ -66,12 +66,5 @@ public class List<E> {
 		return -1;
  
 	}
-	public void kiir(){
-		Node curent = head;	
-		while(curent.getNext()!=null){
-			System.out.println(curent.getContain());
-			curent = curent.getNext();
-		}
-	 
-	}
+ 
 }
