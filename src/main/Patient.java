@@ -4,7 +4,7 @@ public class Patient {
 	
 	private String name;
 	private String complain;
-	public int nurse_id;
+	public int recordId;
 	
 	public Patient(String name,String complain){
 		this.name = name;
@@ -13,12 +13,12 @@ public class Patient {
 	public String getComplain(){
 		return complain;
 	}
-	public void setNurseId(int id){
-		nurse_id = id;
+	public void setrecordId(int id){
+		recordId = id;
 	}
 	@Override
 	public String toString(){
-		return name + " " + complain + " " + nurse_id;
+		return name + " " + complain + " " + recordId;
 	}
 	@Override
 	public boolean equals(Object s){
