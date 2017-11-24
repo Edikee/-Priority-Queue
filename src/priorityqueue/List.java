@@ -1,15 +1,15 @@
 package priorityqueue;
 
-public class List {
-	private Node head;
-	private int length;
+public class List<E> {
+	private Node<E>head;
+	public int length;
 	public List(){
-		head = new Node();
+		head = new Node<E>();
 		head.setNext(null);
 		head.setContain(null);
 		length = -1;
 	}
-	public void add(Object obj){
+	public void add(E obj){
 		if(length == -1){
 			head.setContain(obj);    //first element
 		}
@@ -25,42 +25,54 @@ public class List {
 		}
 		length++;
 	}
-	public void remove(Object obj){
-		Node curent = head;		
-		Node previous = null;
-		boolean found = false;
+	public boolean remove(E obj){
+		Node<E> curent = head;		
+		Node<E> previous = null;
+	 
 		if(head.getContain().equals(obj)){
 			head = head.getNext();
 			length--;
+			return true;
 		}
 		else{
-			while(!found  && curent.getNext()!= null){
-				if(curent.getContain().equals(obj))
-					found = true;
-				else{
-					previous = curent;
-					curent = curent.getNext();
-				}
-			}
-			if(found | curent.getContain().equals(obj)){
-				previous.setNext(curent.getNext());
-				length--;
+			for(int i=0;i<=this.length;i++){
+				if(curent.getContain().equals(obj)){
+					previous.setNext(curent.getNext());
+					length--;
+					return true;
+					}
+				previous = curent;
+				curent = curent.getNext();
+				 
 			}
 		}
+		return false;
 	}
-	public Object get(int index){
-		Node curent = head;	
-		if(length < index){
+	public E get(int index){
+		
+		Node<E> curent = head;	
+		
+		if(length < index || index < 0){
 			throw new IndexOutOfBoundsException();
 		}
+		
 		while(index != 0){
 			curent = curent.getNext();
 			index --;
 		}
+		
 		return curent.getContain();
 	}
-	public int size(){
-		return length;
+	public int get(E obj){
+		Node<E> curent = head;		
+		for(int i=0;i<=this.length;i++){
+		
+			if(curent.getContain().equals(obj))
+				return i;
+			curent = curent.getNext();
+		}
+		return -1;
+ 
 	}
 	public void kiir(){
 		Node curent = head;	
