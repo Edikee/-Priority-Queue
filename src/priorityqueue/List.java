@@ -55,7 +55,7 @@ public class List<E> {
 		
 		return curent.getContain();
 	}
-	public int get(E obj){
+	public int indexOf(E obj){
 		Node<E> curent = head;		
 		for(int i=0;i<=this.length;i++){
 		

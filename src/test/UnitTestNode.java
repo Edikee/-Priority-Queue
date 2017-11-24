@@ -11,13 +11,13 @@ public class UnitTestNode {
          node = new Node();
     }
     @Test
-    public void test_node_setContain_True() {
+    public void NodeSetContain_ContainIs6_True() {
     	
     	node.setContain(6);
         Assert.assertEquals(node.getContain(),6);
     }
     @Test
-    public void test_node_setNext_True() {
+    public void NodeSetNext_NextIsFakeNode_True() {
     	
     	Node fake_node = new Node();
     	node.setNext(fake_node);
