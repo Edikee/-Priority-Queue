@@ -13,12 +13,12 @@ public class Nurse {
 		patient.setrecordId(recordId);
 		int priority = 30;
 		switch(patient.getComplain()){
-			case "shot": priority = 3;break;
-			case "broken": priority = 10;break;
+			case "shoot": priority = 5;break;
+			case "broken": priority = 15;break;
 			case "cut": priority = 20;break;
-			case "stab": priority = 5;break;
+			case "stab": priority = 10;break;
 		}
-	 
+		
 		prque.add(patient,priority);
 		recordId++;
 	}
