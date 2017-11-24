@@ -1,15 +1,15 @@
 package priorityqueue;
 
-public class Node {
+public class Node<E> {
 	
-	private Object contain;
+	private E contain;
 	private Node next;
 	
 	public void setNext(Node next){
 		this.next = next;
 	}
 	
-	public void setContain(Object contain){
+	public void setContain(E contain){
 		this.contain = contain;
 	}
 	
@@ -17,7 +17,7 @@ public class Node {
 		return next;
 	}
 	
-	public Object getContain(){
+	public E getContain(){
 		return contain;
 	}
 
