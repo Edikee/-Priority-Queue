@@ -2,7 +2,7 @@ package priorityqueue;
 
 public class LinkedList<E> extends List<E> {
 
-	private Node<E> head;
+	protected Node<E> head;
 
 	public LinkedList() {
 		super();
