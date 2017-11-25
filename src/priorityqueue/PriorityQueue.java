@@ -3,6 +3,7 @@ package priorityqueue;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 public class PriorityQueue<E> extends Queue<E>{
+	
 	private LinkedList<Integer> priority;
 	private Integer priorityMinIndex;
 	private int priorityMin;
@@ -31,7 +32,7 @@ public class PriorityQueue<E> extends Queue<E>{
 	}
 	public E getMin(){
 		E value = list.get(priorityMinIndex);
-		list.remove(value);
+		list.removeIndexOf(priorityMinIndex);
 		priority.removeIndexOf(priorityMinIndex);
 		searchMin();
 		return value;

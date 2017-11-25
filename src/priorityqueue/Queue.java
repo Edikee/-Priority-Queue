@@ -6,6 +6,7 @@ public class Queue<E> {
 	public Queue(){
 		list = new LinkedList<E>();
 	}
+	
 	public boolean isEmpty(){
 		
 		if(list.size()>0)
