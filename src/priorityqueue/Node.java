@@ -1,25 +1,24 @@
 package priorityqueue;
 
 public class Node<E> {
-	
+
 	private E contain;
 	private Node next;
-	
-	public void setNext(Node next){
+
+	public void setNext(Node next) {
 		this.next = next;
 	}
-	
-	public void setContain(E contain){
+
+	public void setContain(E contain) {
 		this.contain = contain;
 	}
-	
-	public Node getNext(){
+
+	public Node getNext() {
 		return next;
 	}
-	
-	public E getContain(){
+
+	public E getContain() {
 		return contain;
 	}
 
-	
 }

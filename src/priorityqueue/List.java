@@ -1,16 +1,15 @@
 package priorityqueue;
 
 public class List<E> {
-	
+
 	protected int length;
-	
-	public List(){
+
+	public List() {
 		length = 0;
 	}
-	
-	public int size(){
+
+	public int size() {
 		return length;
 	}
 
- 
 }
