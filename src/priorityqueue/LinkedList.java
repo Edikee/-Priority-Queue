@@ -11,7 +11,7 @@ public class LinkedList<E> extends List<E> {
 		head.setContain(null);
 	}
 
-	public boolean add(E obj) {
+	public boolean add(E obj) { // O(1)
 		Node next = new Node();
 		next.setContain(obj);
 		next.setNext(head);
@@ -20,7 +20,7 @@ public class LinkedList<E> extends List<E> {
 		return true;
 	}
 
-	public boolean removeIndexOf(int index) {
+	public boolean removeIndexOf(int index) { // O(n)
 
 		Node<E> curent = head;
 		Node<E> previous = head;
@@ -41,7 +41,7 @@ public class LinkedList<E> extends List<E> {
 		return true;
 	}
 
-	public boolean remove(E obj) {
+	public boolean remove(E obj) { // O(n)
 		Node<E> curent = head;
 		Node<E> previous = null;
 
@@ -51,7 +51,7 @@ public class LinkedList<E> extends List<E> {
 
 			return true;
 		} else {
-			for (int i = 0; i < this.length; i++) {
+			for (int i = 0; i < this.size(); i++) {
 				if (curent.getContain().equals(obj)) {
 					previous.setNext(curent.getNext());
 					length--;
@@ -65,7 +65,7 @@ public class LinkedList<E> extends List<E> {
 		return false;
 	}
 
-	public E get(int index) {
+	public E get(int index) { // O(n)
 
 		Node<E> curent = head;
 
@@ -81,7 +81,7 @@ public class LinkedList<E> extends List<E> {
 		return curent.getContain();
 	}
 
-	public int indexOf(E obj) {
+	public int indexOf(E obj) { // O(n)
 		Node<E> curent = head;
 		for (int i = 0; i <= this.length; i++) {
 

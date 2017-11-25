@@ -16,7 +16,7 @@ public class PriorityQueue<E> extends Queue<E> {
 
 	}
 
-	public synchronized boolean add(E obj, Integer priorityNumber) {
+	public synchronized boolean add(E obj, Integer priorityNumber) { // O(1)
 
 		list.add(obj);
 		priority.add(priorityNumber);
@@ -30,7 +30,7 @@ public class PriorityQueue<E> extends Queue<E> {
 		return true;
 	}
 
-	public synchronized E getMin() {
+	public synchronized E getMin() { // O(n)
 
 		E value = list.get(priorityMinIndex);
 
@@ -42,7 +42,7 @@ public class PriorityQueue<E> extends Queue<E> {
 		return value;
 	}
 
-	private synchronized void searchMin() {
+	private synchronized void searchMin() { // O(n)
 		priorityMin = Integer.MAX_VALUE;
 
 		for (int i = 0; i < priority.size(); i++) {
@@ -57,7 +57,7 @@ public class PriorityQueue<E> extends Queue<E> {
 
 	}
 
-	public synchronized void changePriority(E oldObj, E newObj, int priorit) {
+	public synchronized void changePriority(E oldObj, E newObj, int priorit) { // O(n)
 		int index = list.indexOf(oldObj);
 		if (list.remove(oldObj)) {
 			priority.removeIndexOf(index);

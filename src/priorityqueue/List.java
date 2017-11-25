@@ -8,9 +8,9 @@ public class List<E> {
 		length = 0;
 	}
 
-	public int size() {
+	public int size() { // O(1)
 		return length;
- 
+
 	}
 
 }
