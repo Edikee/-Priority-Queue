@@ -4,7 +4,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 
 public class PriorityQueue<E> extends Queue<E> {
 
-	private LinkedList<Integer> priority;
+	protected LinkedList<Integer> priority;
 	private Integer priorityMinIndex;
 	private int priorityMin;
 

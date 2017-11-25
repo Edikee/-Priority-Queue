@@ -10,6 +10,7 @@ public class List<E> {
 
 	public int size() {
 		return length;
+ 
 	}
 
 }

@@ -5,23 +5,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UnitTestNode {
-	Node node;
-    @Before
-    public void setUp() throws Exception {
-         node = new Node();
+	@Test
+    public void GetContain_ContainIs5_True() {
+    	Node fakeNode = new FakeNode5();
+        Assert.assertEquals(fakeNode.getContain(),5);
     }
     @Test
-    public void NodeSetContain_ContainIs6_True() {
+    public void GetNext_NextIsNull_Node_True() {
     	
-    	node.setContain(6);
-        Assert.assertEquals(node.getContain(),6);
+    	Node fakeNode = new FakeNode5();
+        Assert.assertEquals(fakeNode.getNext(), null);
     }
     @Test
-    public void NodeSetNext_NextIsFakeNode_True() {
+    public void GetNext_NextIsFakeNode5_Node_True() {
     	
-    	Node fake_node = new Node();
-    	node.setNext(fake_node);
-        Assert.assertEquals(node.getNext(), fake_node);
+    	Node fakeNode5 = new FakeNode5();
+    	Node fakeNode6 = new FakeNode6();
+    	fakeNode5.setNext(fakeNode6);
+        Assert.assertEquals(fakeNode5.getNext(), fakeNode6);
     }
 }
 
