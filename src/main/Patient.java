@@ -18,7 +18,7 @@ public class Patient {
 	}
 	@Override
 	public String toString(){
-		return name + " " + complain + " " + recordId;
+		return name + " Problem: " + complain + " Recordid: " + recordId;
 	}
 	@Override
 	public boolean equals(Object s){
