@@ -22,7 +22,7 @@ public class Doctor extends Person implements Runnable {
 					heal(nurse.getPatient());
 				}
 				try {
-					Thread.sleep(4000);
+					Thread.sleep(1500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

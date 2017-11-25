@@ -4,7 +4,7 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 import priorityqueue.*;
 
-public class Nurse extends Person implements Runnable{
+public class Nurse extends Person implements Runnable {
 	private PriorityQueue<Patient> prque;
 	private int recordId;
 
@@ -56,32 +56,42 @@ public class Nurse extends Person implements Runnable{
 		newPatient.setrecordId(patient.recordId);
 		prque.changePriority(patient, newPatient, newPriority);
 	}
-	public boolean isEmpty(){
+
+	public boolean isEmpty() {
 		return prque.isEmpty();
 	}
+
 	@Override
-	public void run(){
-		for(int i=0;i<30;i++){
-		 
+	public void run() {
+		for (int i = 0; i < 30; i++) {
+
 			try {
 				Thread.sleep(500);
-				String complain = "" ;
-				switch(recordId%4){
-					case 0 : complain = "shoot";break;
-					case 1 : complain = "cut";break;
-					case 2 : complain = "broken";break;
-					case 3 : complain = "stab";break;
-				
+				String complain = "";
+				switch (recordId % 4) {
+				case 0:
+					complain = "shoot";
+					break;
+				case 1:
+					complain = "cut";
+					break;
+				case 2:
+					complain = "broken";
+					break;
+				case 3:
+					complain = "stab";
+					break;
+
 				}
-				Patient p = new Patient("patient "+ recordId,complain);
+				Patient p = new Patient("patient " + recordId, complain);
 				p.setrecordId(recordId);
-				System.out.println("Nurse record "+ p);
+				System.out.println("Nurse record " + p.getPersonName() + " with " + p.getComplain());
 				this.record(p);
-				if(i%10==1){
+				if (i % 10 == 1) {
 					this.event(p, "stop breath");
-					System.out.println(p +"stop breath");
+					System.out.println("Warning!!" + p.getPersonName() + " stop breath " + "Warning!!");
 				}
-				
+
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
