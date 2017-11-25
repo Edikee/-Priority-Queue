@@ -1,6 +1,7 @@
 package priorityqueue;
 
 public class List<E> {
+	
 	protected int length;
 	
 	public List(){

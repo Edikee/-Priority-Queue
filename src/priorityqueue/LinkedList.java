@@ -1,20 +1,21 @@
 package priorityqueue;
 
 public class LinkedList<E> extends List<E>{
-	private Node<E>head;
 	
+	private Node<E>head;
 	public LinkedList(){
 		super();
 		head = new Node<E>();
 		head.setNext(null);
 		head.setContain(null);
 	}
-	public void add(E obj){
+	public boolean add(E obj){
 		Node next = new Node();
 		next.setContain(obj);
 		next.setNext(head);
 		head = next;
 		length++;
+		return true;
 	}
 	public boolean removeIndexOf(int index){
  

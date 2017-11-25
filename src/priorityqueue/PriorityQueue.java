@@ -15,7 +15,7 @@ public class PriorityQueue<E> extends Queue<E>{
 		priorityMin = 50;
 		
 	} 
-	public void add(E obj,Integer priorityNumber){
+	public boolean add(E obj,Integer priorityNumber){
 		
 		list.add(obj);
 		priority.add(priorityNumber);
@@ -27,7 +27,7 @@ public class PriorityQueue<E> extends Queue<E>{
 		else 
 			priorityMinIndex++;
 		
-		
+		return true;
 	}
 	public E getMin(){
 		E value = list.get(priorityMinIndex);
