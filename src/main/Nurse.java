@@ -4,7 +4,7 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 import priorityqueue.*;
 
-public class Nurse extends Person {
+public class Nurse extends Person implements Runnable{
 	private PriorityQueue<Patient> prque;
 	private int recordId;
 
@@ -52,8 +52,40 @@ public class Nurse extends Person {
 			break;
 		}
 		Patient newPatient;
-		newPatient = new Patient(patient.getName(), event);
+		newPatient = new Patient(patient.getPersonName(), event);
 		newPatient.setrecordId(patient.recordId);
 		prque.changePriority(patient, newPatient, newPriority);
+	}
+	public boolean isEmpty(){
+		return prque.isEmpty();
+	}
+	@Override
+	public void run(){
+		for(int i=0;i<30;i++){
+		 
+			try {
+				Thread.sleep(500);
+				String complain = "" ;
+				switch(recordId%4){
+					case 0 : complain = "shoot";break;
+					case 1 : complain = "cut";break;
+					case 2 : complain = "broken";break;
+					case 3 : complain = "stab";break;
+				
+				}
+				Patient p = new Patient("patient "+ recordId,complain);
+				p.setrecordId(recordId);
+				System.out.println("Nurse record "+ p);
+				this.record(p);
+				if(i%10==1){
+					this.event(p, "stop breath");
+					System.out.println(p +"stop breath");
+				}
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

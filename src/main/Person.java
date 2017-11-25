@@ -1,14 +1,15 @@
 package main;
 
-public class Person {
-	protected String name;
+public class Person  {
+	protected String personName;
 	public Person(String name){
-		this.name = name;
+		this.personName = name;
 	}
-	public void setName(String newName){
-		this.name = newName;
+	public void setPersonName(String newName){
+		this.personName = newName;
 	}
-	public String getName(){
-		return this.name;
+	public String getPersonName(){
+		return this.personName;
 	}
+ 
 }

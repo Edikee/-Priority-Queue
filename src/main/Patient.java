@@ -20,7 +20,7 @@ public class Patient extends Person {
 
 	@Override
 	public String toString() {
-		return name + complain + recordId;
+		return personName + " " + complain + " " + recordId;
 	}
 
 	@Override
