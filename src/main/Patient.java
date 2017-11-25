@@ -1,18 +1,13 @@
 package main;
 
-public class Patient {
+public class Patient extends Person {
 
-	private String name;
 	private String complain;
 	public int recordId;
 
 	public Patient(String name, String complain) {
-		this.name = name;
+		super(name);
 		this.complain = complain;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public String getComplain() {
@@ -25,7 +20,7 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return name + " Problem: " + complain + " Recordid: " + recordId;
+		return name + complain + recordId;
 	}
 
 	@Override

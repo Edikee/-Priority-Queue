@@ -7,9 +7,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		 
-		Nurse nurse = new Nurse();
-		Doctor doctor = new Doctor();
-		int length = 28;
+		Nurse nurse = new Nurse("Nurse");
+		Doctor doctor = new Doctor("Doctor");
+		int length = 40;
 		Patient[] p = new Patient[length];
 		
 		for(int i=0;i<length;i++){
@@ -23,7 +23,9 @@ public class Main {
 			}
 			p[i] = new Patient(name,complain);
 			nurse.record(p[i]);
-			
+			if(i%5==0){
+				nurse.event(p[i], "stop breath");
+			}
 		}
  
 		for(int i=0;i<length;i++){

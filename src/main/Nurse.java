@@ -4,11 +4,12 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 import priorityqueue.*;
 
-public class Nurse {
+public class Nurse extends Person {
 	private PriorityQueue<Patient> prque;
 	private int recordId;
 
-	public Nurse() {
+	public Nurse(String name) {
+		super(name);
 		prque = new PriorityQueue<Patient>();
 		recordId = 0;
 	}
@@ -52,6 +53,7 @@ public class Nurse {
 		}
 		Patient newPatient;
 		newPatient = new Patient(patient.getName(), event);
+		newPatient.setrecordId(patient.recordId);
 		prque.changePriority(patient, newPatient, newPriority);
 	}
 }
