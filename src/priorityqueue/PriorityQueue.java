@@ -2,16 +2,15 @@ package priorityqueue;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
-public class PriorityQueue<E> {
-	private List<E> list;
-	private List<Integer> priority;
+public class PriorityQueue<E> extends Queue<E>{
+	private LinkedList<Integer> priority;
 	private Integer priorityMinIndex;
 	private int priorityMin;
-	public boolean lock;
+	 
 	
 	public PriorityQueue(){
-		list = new List<E>();
-		priority = new List<Integer>();
+		super();
+		priority = new LinkedList<Integer>();
 		priorityMinIndex = 0;
 		priorityMin = 50;
 		
@@ -34,7 +33,6 @@ public class PriorityQueue<E> {
 		E value = list.get(priorityMinIndex);
 		list.remove(value);
 		priority.removeIndexOf(priorityMinIndex);
-	 
 		searchMin();
 		return value;
 	}	
@@ -42,7 +40,7 @@ public class PriorityQueue<E> {
 	private void searchMin(){
 		priorityMin = 50;
 		Integer tmp =  priority.get(0);
-		for(int i=0 ; i< priority.length ; i++){
+		for(int i=0 ; i< priority.size() ; i++){
 			tmp = priority.get(i);
 		
 			if(priorityMin >= tmp){
@@ -65,7 +63,7 @@ public class PriorityQueue<E> {
 	
 	public void kiir(){
  
-		for(int i=0;i<list.length;i++){
+		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i) + " " + priority.get(i)+ " ");
 		}
 	 
