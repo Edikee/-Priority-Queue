@@ -1,3 +1,6 @@
+UML:
+![Alt text](./Diagram.png?raw=true "UML")
+
 Priority:
 * stop breath = 1 
 * shoot = 5
