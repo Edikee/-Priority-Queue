@@ -1,3 +1,12 @@
+Priority:
+* stop breath = 1 
+* shoot = 5
+* stab = 10
+* broken = 15
+* cut = 20
+
+Demo:
+
 Doctor2 there are no Patients
 
 Nurse record patient 0 with shoot
