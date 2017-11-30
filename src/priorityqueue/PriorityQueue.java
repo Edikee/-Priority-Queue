@@ -34,15 +34,15 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	@Override
 	public E getFirst() { // O(log n )
 		E value = null;
-
 		Object[] keySet = hashmap.keySet().toArray();
 		int index = 0;
 		boolean ok = false;
 		List list = null;
+
 		synchronized (lock) {
 
-			while (!ok && index < keySet.length) { 
-			 
+			while (!ok && index < keySet.length) {
+
 				list = hashmap.get(keySet[index]);
 				if (list.size() > 0) {
 					ok = true;
