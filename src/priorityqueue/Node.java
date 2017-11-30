@@ -2,7 +2,7 @@ package priorityqueue;
 
 public class Node<E> {
 
-	protected E contain;
+	protected E innerObject;
 	protected Node next;
 
 	public void setNext(Node next) {
@@ -10,7 +10,7 @@ public class Node<E> {
 	}
 
 	public void setContain(E contain) {
-		this.contain = contain;
+		this.innerObject = contain;
 	}
 
 	public Node getNext() {
@@ -18,7 +18,7 @@ public class Node<E> {
 	}
 
 	public E getContain() {
-		return contain;
+		return innerObject;
 	}
 
 }

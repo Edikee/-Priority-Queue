@@ -4,6 +4,6 @@ import priorityqueue.*;
 
 public class FakeNode5 extends Node {
 	public FakeNode5() {
-		this.contain = 5;
+		this.innerObject = 5;
 	}
 }

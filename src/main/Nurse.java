@@ -37,7 +37,7 @@ public class Nurse extends Person implements Runnable {
 	}
 
 	public Patient getPatient() {
-		return prque.getMin();
+		return prque.getFirst();
 	}
 
 	public void event(Patient patient, String event) {

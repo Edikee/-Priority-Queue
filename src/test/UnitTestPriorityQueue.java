@@ -22,8 +22,8 @@ public class UnitTestPriorityQueue {
 	@Test
 	public void getMin_getMinisFakeNode5_True() {
 		FakePriorityQueue fpq = new FakePriorityQueue();
-		Node fn = fpq.getMin();
-		Node fnn = fpq.getMin();
+		Node fn = fpq.getFirst();
+		Node fnn = fpq.getFirst();
 		Assert.assertEquals(fn.getContain(), 6);
 		Assert.assertEquals(fnn.getContain(), 5);
 

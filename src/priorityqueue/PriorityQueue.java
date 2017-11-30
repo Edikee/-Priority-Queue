@@ -30,7 +30,7 @@ public class PriorityQueue<E> extends Queue<E> {
 		return true;
 	}
 
-	public synchronized E getMin() { // O(n)
+	public synchronized E getFirst() { // O(n)
 
 		E value = list.get(priorityMinIndex);
 
