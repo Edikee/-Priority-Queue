@@ -1,22 +1,20 @@
 package priorityqueue;
 
+import java.util.HashMap;
+
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 public class PriorityQueue<E> extends AbstractQueue<E> {
 
-	private List<Integer> priority;
-	private Integer priorityMinIndex;
-	private int priorityMin;
 	private Object lock = new Object();
 
 	public PriorityQueue() {
 		super();
-		priority = new LinkedList<Integer>();
-		priorityMinIndex = 0;
-		priorityMin = Integer.MAX_VALUE;
 
 	}
 
 	@Override
-	public boolean add(E obj) {
+	public boolean add(E obj) { //O(1)
 
 		return add(obj, 1);
 	}
@@ -24,57 +22,48 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	public boolean add(E obj, Integer priorityNumber) { // O(1)
 		synchronized (lock) {
 
-			list.add(obj);
-			priority.add(priorityNumber);
+			hashmap.get(priorityNumber).add(obj);
 
-			if (priorityMin > priorityNumber) {
-				priorityMinIndex = 0;
-				priorityMin = priorityNumber;
-			} else {
-				priorityMinIndex++;
-			}
 		}
 		return true;
 	}
 
 	@Override
-	public E getFirst() { // O(n)
+	public E getFirst() { // O(log n ) 
 		E value = null;
 		synchronized (lock) {
-			value = list.get(priorityMinIndex);
 
-			list.remove(value);
-			priority.removeIndexOf(priorityMinIndex);
-			searchMin();
+			Object[] keySet = hashmap.keySet().toArray();
+			int index = 0;
+			boolean ok = false;
+			List list = null;
+			while (!ok && index < keySet.length) {	//get the list with the min priority
+				list = hashmap.get(keySet[index]);
+				if (list.size() > 0) {
+					ok = true;
+				} else {
+					index++;
+				}
+			}
+
+			value = (E) list.get(list.size() - 1);	//get the last object
+			list.remove(value);						//remove the object from the list 
 		}
 
 		return value;
-	}
-
-	private void searchMin() { // O(n)
-		priorityMin = Integer.MAX_VALUE;
-
-		for (int i = 0; i < priority.size(); i++) {
-			Integer tmp = priority.get(i);
-
-			if (priorityMin >= tmp) {
-				priorityMin = tmp;
-				priorityMinIndex = i;
-			}
-
-		}
 
 	}
 
-	public void changePriority(E oldObj, E newObj, int priorit) { // O(n)
+	public void changePriority(E oldObj, E newObj, int priorit) { // O(1)
 
 		synchronized (lock) {
-			int index = list.indexOf(oldObj);
-			if (list.remove(oldObj)) {
-				priority.removeIndexOf(index);
-				searchMin();
-				this.add(newObj, priorit);
+			for (Integer key : hashmap.keySet()) {
+
+				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) { //remove the old object
+					break;
+				}
 			}
+			add(newObj, priorit);
 		}
 	}
 
