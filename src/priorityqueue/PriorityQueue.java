@@ -14,7 +14,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	@Override
-	public boolean add(E obj) { //O(1)
+	public boolean add(E obj) { // O(1)
 
 		return add(obj, 1);
 	}
@@ -29,7 +29,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	@Override
-	public E getFirst() { // O(log n ) 
+	public E getFirst() { // O(log n )
 		E value = null;
 		synchronized (lock) {
 
@@ -37,7 +37,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 			int index = 0;
 			boolean ok = false;
 			List list = null;
-			while (!ok && index < keySet.length) {	//get the list with the min priority
+			while (!ok && index < keySet.length) { // get the list with the min
+													// priority
 				list = hashmap.get(keySet[index]);
 				if (list.size() > 0) {
 					ok = true;
@@ -46,8 +47,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 				}
 			}
 
-			value = (E) list.get(list.size() - 1);	//get the last object
-			list.remove(value);						//remove the object from the list 
+			value = (E) list.get(list.size() - 1); // get the last object
+			list.remove(value); // remove the object from the list
 		}
 
 		return value;
@@ -59,7 +60,10 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		synchronized (lock) {
 			for (Integer key : hashmap.keySet()) {
 
-				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) { //remove the old object
+				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) { // remove
+																						// the
+																						// old
+																						// object
 					break;
 				}
 			}
