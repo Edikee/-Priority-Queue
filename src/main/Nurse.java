@@ -5,7 +5,7 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 import priorityqueue.*;
 
 public class Nurse extends Person implements Runnable {
-	private Queue<Patient> prque;
+	private PriorityQueue<Patient> prque;
 	private int recordId;
 
 	public Nurse(String name) {

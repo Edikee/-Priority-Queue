@@ -1,7 +1,5 @@
 package priorityqueue;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	protected List<Integer> priority;
@@ -14,6 +12,12 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		priorityMinIndex = 0;
 		priorityMin = Integer.MAX_VALUE;
 
+	}
+
+	@Override
+	public boolean add(E obj) {
+
+		return add(obj, 1);
 	}
 
 	public synchronized boolean add(E obj, Integer priorityNumber) { // O(1)
@@ -30,6 +34,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		return true;
 	}
 
+	@Override
 	public synchronized E getFirst() { // O(n)
 
 		E value = list.get(priorityMinIndex);
@@ -42,7 +47,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		return value;
 	}
 
-	  public synchronized void searchMin() { // O(n)
+	public synchronized void searchMin() { // O(n)
 		priorityMin = Integer.MAX_VALUE;
 
 		for (int i = 0; i < priority.size(); i++) {

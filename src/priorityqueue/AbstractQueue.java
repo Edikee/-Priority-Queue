@@ -1,6 +1,6 @@
 package priorityqueue;
 
-public abstract class AbstractQueue<E> implements Queue<E>{
+public abstract class AbstractQueue<E> implements Queue<E> {
 	protected List<E> list;
 
 	public AbstractQueue() {
@@ -13,4 +13,5 @@ public abstract class AbstractQueue<E> implements Queue<E>{
 			return false;
 		return true;
 	}
+
 }
