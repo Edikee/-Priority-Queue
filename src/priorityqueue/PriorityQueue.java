@@ -21,8 +21,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	public boolean add(E obj, Integer priorityNumber) { // O(1)
 
-		List tmpList = hashmap.get(priorityNumber);
 		synchronized (lock) {
+			List tmpList = hashmap.get(priorityNumber);
 			if (tmpList != null) {
 				hashmap.get(priorityNumber).add(obj);
 			} else {
@@ -37,13 +37,13 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	@Override
 	public E getFirst() { // O(log n )
 		E value = null;
-		Object[] keySet = hashmap.keySet().toArray();
+
 		int index = 0;
 		boolean ok = false;
 		List list = null;
 
 		synchronized (lock) {
-
+			Object[] keySet = hashmap.keySet().toArray();
 			while (!ok && index < keySet.length) {
 
 				list = hashmap.get(keySet[index]);
