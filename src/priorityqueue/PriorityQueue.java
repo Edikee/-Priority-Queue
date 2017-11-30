@@ -21,12 +21,15 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	public boolean add(E obj, Integer priorityNumber) { // O(1)
 
-		if (priorityNumber > 30 || priorityNumber < 0) {
-			new IllegalArgumentException("priorityNumber must be between 0 and 30");
-		}
+		List tmpList = hashmap.get(priorityNumber);
 		synchronized (lock) {
-			hashmap.get(priorityNumber).add(obj);
-
+			if (tmpList != null) {
+				hashmap.get(priorityNumber).add(obj);
+			} else {
+				List newList = new LinkedList<E>();
+				newList.add(obj);
+				hashmap.put(priorityNumber, newList);
+			}
 		}
 		return true;
 	}
