@@ -29,7 +29,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	@Override
-	public E getFirst() { // O(log n )
+	public E getFirst() { // O(1)
 		E value = null;
 		synchronized (lock) {
 
@@ -60,10 +60,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		synchronized (lock) {
 			for (Integer key : hashmap.keySet()) {
 
-				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) { // remove
-																						// the
-																						// old
-																						// object
+				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) {
 					break;
 				}
 			}
