@@ -2,7 +2,7 @@ package priorityqueue;
 
 public class PriorityQueue<E> extends AbstractQueue<E> {
 
-	protected List<Integer> priority;
+	private List<Integer> priority;
 	private Integer priorityMinIndex;
 	private int priorityMin;
 	private Object lock = new Object();

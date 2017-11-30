@@ -10,13 +10,6 @@ import org.junit.Assert;
 
 public class UnitTestLinkedList {
 
-
-	@Before
-	public void setUp() {
-
-
-	}
-
 	@Test
 	public void Size_SizeIs2_True() {
 		FakeLinkedList fll = new FakeLinkedList();
