@@ -20,10 +20,11 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	public boolean add(E obj, Integer priorityNumber) { // O(1)
+
+		if (priorityNumber > 30 || priorityNumber < 0) {
+			new IllegalArgumentException("priorityNumber must be between 0 and 30");
+		}
 		synchronized (lock) {
-			if(priorityNumber > 30 || priorityNumber < 0){
-				new IllegalArgumentException("priorityNumber must be between 0 and 30");
-			}
 			hashmap.get(priorityNumber).add(obj);
 
 		}
@@ -33,14 +34,15 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	@Override
 	public E getFirst() { // O(log n )
 		E value = null;
+
+		Object[] keySet = hashmap.keySet().toArray();
+		int index = 0;
+		boolean ok = false;
+		List list = null;
 		synchronized (lock) {
 
-			Object[] keySet = hashmap.keySet().toArray();
-			int index = 0;
-			boolean ok = false;
-			List list = null;
-			while (!ok && index < keySet.length) { // get the list with the min
-								// priority					
+			while (!ok && index < keySet.length) { 
+			 
 				list = hashmap.get(keySet[index]);
 				if (list.size() > 0) {
 					ok = true;
@@ -66,8 +68,9 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 					break;
 				}
 			}
-			add(newObj, priorit);
 		}
+		add(newObj, priorit);
+
 	}
 
 }
