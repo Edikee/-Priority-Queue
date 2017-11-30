@@ -9,13 +9,11 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 import org.junit.Assert;
 
 public class UnitTestLinkedList {
-	FakeNode5 fn5;
-	FakeNode6 fn6;
+
 
 	@Before
 	public void setUp() {
-		fn5 = new FakeNode5();
-		fn6 = new FakeNode6();
+
 
 	}
 
@@ -49,7 +47,9 @@ public class UnitTestLinkedList {
 	public void Add_AddFakeNode5_True() {
 
 		FakeLinkedList fll = new FakeLinkedList();
-		fll.add(new FakeNode5());
+		Node fn = new Node();
+		fn.setContain(5);
+		fll.add(fn);
 
 		Assert.assertEquals((fll.get(2)).getContain(), 5);
 		Assert.assertEquals(fll.size(), 3);

@@ -20,7 +20,7 @@ public class UnitTestPriorityQueue {
 	}
 
 	@Test
-	public void getMin_getMinisFakeNode5_True() {
+	public void getFirst_getMinisFakeNode5_True() {
 		FakePriorityQueue fpq = new FakePriorityQueue();
 		Node fn = fpq.getFirst();
 		Node fnn = fpq.getFirst();
