@@ -1,6 +1,6 @@
 package priorityqueue;
 
-public class LinkedList<E> extends List<E> {
+public class LinkedList<E> extends AbstractList<E>  {
 
 	protected Node<E> head;
 

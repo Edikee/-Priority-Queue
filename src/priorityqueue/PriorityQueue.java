@@ -2,9 +2,9 @@ package priorityqueue;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
-public class PriorityQueue<E> extends Queue<E> {
+public class PriorityQueue<E> extends AbstractQueue<E> {
 
-	protected LinkedList<Integer> priority;
+	protected List<Integer> priority;
 	private Integer priorityMinIndex;
 	private int priorityMin;
 
@@ -24,9 +24,9 @@ public class PriorityQueue<E> extends Queue<E> {
 		if (priorityMin > priorityNumber) {
 			priorityMinIndex = 0;
 			priorityMin = priorityNumber;
-		} else
+		} else {
 			priorityMinIndex++;
-
+		}
 		return true;
 	}
 
@@ -42,7 +42,7 @@ public class PriorityQueue<E> extends Queue<E> {
 		return value;
 	}
 
-	private synchronized void searchMin() { // O(n)
+	  public synchronized void searchMin() { // O(n)
 		priorityMin = Integer.MAX_VALUE;
 
 		for (int i = 0; i < priority.size(); i++) {

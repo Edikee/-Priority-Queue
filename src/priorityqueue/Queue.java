@@ -1,16 +1,13 @@
 package priorityqueue;
 
-public class Queue<E> {
-	protected LinkedList<E> list;
+public interface Queue<E> {
+	public boolean add(E obj, Integer priorityNumber);
 
-	public Queue() {
-		list = new LinkedList<E>();
-	}
+	public E getFirst();
 
-	public boolean isEmpty() { // O(1)
+	void searchMin();
 
-		if (list.size() > 0)
-			return false;
-		return true;
-	}
+	public void changePriority(E oldObj, E newObj, int priorit);
+
+	public boolean isEmpty();
 }

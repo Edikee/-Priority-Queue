@@ -1,16 +1,15 @@
 package priorityqueue;
 
-public class List<E> {
+public interface List<E> {
+	public boolean add(E obj);
 
-	protected int length;
+	public boolean removeIndexOf(int index);
 
-	public List() {
-		length = 0;
-	}
+	public boolean remove(E obj);
 
-	public int size() { // O(1)
-		return length;
+	public E get(int index);
 
-	}
+	public int indexOf(E obj);
 
+	public int size();
 }

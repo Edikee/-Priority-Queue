@@ -25,8 +25,9 @@ public class Patient extends Person {
 
 	@Override
 	public boolean equals(Object s) {
-		if (this.toString().hashCode() == s.toString().hashCode())
+		if (this.toString().hashCode() == s.toString().hashCode()) {
 			return true;
+		}
 		return false;
 	}
 
