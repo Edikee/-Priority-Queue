@@ -29,7 +29,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	@Override
-	public E getFirst() { // O(1)
+	public E getFirst() { // O(log n )
 		E value = null;
 		synchronized (lock) {
 
@@ -38,7 +38,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 			boolean ok = false;
 			List list = null;
 			while (!ok && index < keySet.length) { // get the list with the min
-													// priority
+								// priority					
 				list = hashmap.get(keySet[index]);
 				if (list.size() > 0) {
 					ok = true;
