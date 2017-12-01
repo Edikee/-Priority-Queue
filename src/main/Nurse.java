@@ -16,8 +16,26 @@ public class Nurse extends Person implements Runnable {
 
 	public void record(Patient patient) {
 		patient.setrecordId(recordId);
+		int priority = getPriority(patient.getComplain());
+
+		prque.add(patient, priority);
+		recordId++;
+	}
+
+	public Patient getPatient() {
+		return prque.getFirst();
+	}
+
+	public int getPriority(String complain) {
 		int priority = 30;
-		switch (patient.getComplain()) {
+
+		switch (complain) {
+		case "collapse":
+			priority = 2;
+			break;
+		case "stop breath":
+			priority = 1;
+			break;
 		case "shoot":
 			priority = 5;
 			break;
@@ -32,29 +50,19 @@ public class Nurse extends Person implements Runnable {
 			break;
 		}
 
-		prque.add(patient, priority);
-		recordId++;
-	}
+		return priority;
 
-	public Patient getPatient() {
-		return prque.getFirst();
 	}
 
 	public void event(Patient patient, String event) {
-		int newPriority = 0;
+		int newPriority = getPriority(event);
+		int oldPriority = getPriority(patient.getComplain());
 
-		switch (event) {
-		case "collapse":
-			newPriority = 2;
-			break;
-		case "stop breath":
-			newPriority = 1;
-			break;
-		}
 		Patient newPatient;
 		newPatient = new Patient(patient.getPersonName(), event);
 		newPatient.setrecordId(patient.recordId);
-		prque.changePriority(patient, newPatient, newPriority);
+
+		prque.changePriority(patient, oldPriority, newPatient, newPriority);
 	}
 
 	public boolean isEmpty() {

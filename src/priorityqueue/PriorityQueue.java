@@ -62,15 +62,13 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	}
 
-	public void changePriority(E oldObj, E newObj, int priorit) { // O(1)
+	public void changePriority(E oldObj, int oldpriority, E newObj, int priorit) { // O(log
+																					// n)
 
 		synchronized (lock) {
-			for (Integer key : hashmap.keySet()) {
 
-				if (hashmap.get(key).size() > 0 && hashmap.get(key).remove(oldObj)) {
-					break;
-				}
-			}
+			hashmap.get(oldpriority).remove(oldObj);
+
 		}
 		add(newObj, priorit);
 
