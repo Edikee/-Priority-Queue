@@ -17,6 +17,7 @@ public class LinkedList<E> extends AbstractList<E> {
 		next.setNext(head);
 		head = next;
 		length++;
+
 		return true;
 	}
 

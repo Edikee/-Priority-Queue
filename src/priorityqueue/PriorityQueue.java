@@ -1,35 +1,23 @@
 package priorityqueue;
 
+import java.util.ArrayList;
+
+import javax.sound.midi.MidiChannel;
+
 public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	private Object lock = new Object();
-	private int minIndex;
+	private ArrayList<Integer> minIndexList;
 
 	public PriorityQueue() {
 		super();
-		minIndex = Integer.MAX_VALUE;
+
+		minIndexList = new ArrayList<Integer>();
 	}
 
-	public void searchMinIndex() { // O(log n )
-		List<E> list = null;
-		boolean ok = false;
-
-		int index = 0;
-		synchronized (lock) {
-
-			Object[] keySet = hashmap.keySet().toArray();
-			while (!ok && index < keySet.length) {
-
-				list = hashmap.get(keySet[index]);
-				if (list.size() > 0) {
-					minIndex = (int) keySet[index];
-					ok = true;
-				} else {
-					index++;
-				}
-
-			}
-		}
+	public void minIndexListAdd(Integer priority) { // O(log n )
+		int index = binarySearch(priority, minIndexList);
+		minIndexList.add(index, priority);
 	}
 
 	@Override
@@ -54,10 +42,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 				hashmap.put(priorityNumber, newList);
 
 			}
-			if (priorityNumber < minIndex) {
-
-				minIndex = priorityNumber;
-			}
+			minIndexListAdd(priorityNumber);
 		}
 
 		return true;
@@ -71,14 +56,11 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 		synchronized (lock) {
 
-			list = hashmap.get(minIndex);
+			list = hashmap.get(minIndexList.get(0));
+			minIndexList.remove((Object) minIndexList.get(0));
 			value = (E) list.get(list.size() - 1); // get the last object
 			list.remove(value); // remove the object from the list
 
-			if (list.size() == 0) {
-
-				searchMinIndex();
-			}
 		}
 
 		return value;
@@ -92,13 +74,30 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			hashmap.get(oldpriority).remove(oldObj);
 
-			if (hashmap.get(oldpriority).size() == 0 && newpriorit > minIndex) {
+			minIndexList.remove((Object) oldpriority);
 
-				searchMinIndex();
-			}
 		}
 		add(newObj, newpriorit);
 
+	}
+
+	public int binarySearch(int key, ArrayList<Integer> tomb) {
+		int low = 0;
+		int high = tomb.size() - 1;
+
+		while (high >= low) {
+			int middle = (low + high) / 2;
+			if (tomb.get(middle) == key) {
+				return middle;
+			}
+			if (tomb.get(middle) < key) {
+				low = middle + 1;
+			}
+			if (tomb.get(middle) > key) {
+				high = middle - 1;
+			}
+		}
+		return low;
 	}
 
 }
