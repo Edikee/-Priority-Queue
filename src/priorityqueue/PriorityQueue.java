@@ -10,19 +10,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	private ArrayList<Integer> minIndexList;
 
 	public PriorityQueue() {
-		super();
 
 		minIndexList = new ArrayList<Integer>();
-	}
-
-	private void minIndexListAdd(Integer priority) { // O(log n )
-		int index = binarySearch(priority, minIndexList);
-		minIndexList.add(index, priority);
-	}
-
-	private void minIndexListRemove(Integer priority) { // O(log n )
-		int index = binarySearch(priority, minIndexList);
-		minIndexList.remove(index);
 	}
 
 	@Override
@@ -58,13 +47,13 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		E value = null;
 
 		List<E> list = null;
-
+		int minPriority;
 		synchronized (lock) {
 
-			list = hashmap.get(minIndexList.get(0));
-			minIndexList.remove((Object) minIndexList.get(0));
+			minPriority = minIndexList.get(0);
+			list = hashmap.get(minPriority);
 			value = (E) list.get(list.size() - 1); // get the last object
-			list.remove(value); // remove the object from the list
+			remove(minPriority, value);
 
 		}
 
@@ -72,18 +61,35 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	}
 
+	public void remove(int priority, E obj) {
+		List<E> list = null;
+		synchronized (lock) {
+			list = hashmap.get(priority);
+			list.remove(obj);
+
+			minIndexListRemove(priority);
+		}
+	}
+
 	public void changePriority(E oldObj, int oldpriority, E newObj, int newpriorit) { // O(log
 																						// n)
-
 		synchronized (lock) {
 
-			hashmap.get(oldpriority).remove(oldObj);
+			remove(oldpriority, oldObj);
 
-			minIndexListRemove(oldpriority);
-
+			add(newObj, newpriorit);
 		}
-		add(newObj, newpriorit);
 
+	}
+
+	private void minIndexListAdd(Integer priority) { // O(log n )
+		int index = binarySearch(priority, minIndexList);
+		minIndexList.add(index, priority);
+	}
+
+	private void minIndexListRemove(Integer priority) { // O(log n )
+		int index = binarySearch(priority, minIndexList);
+		minIndexList.remove(index);
 	}
 
 	private int binarySearch(int key, ArrayList<Integer> tomb) {
