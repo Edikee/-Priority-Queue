@@ -15,9 +15,14 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		minIndexList = new ArrayList<Integer>();
 	}
 
-	public void minIndexListAdd(Integer priority) { // O(log n )
+	private void minIndexListAdd(Integer priority) { // O(log n )
 		int index = binarySearch(priority, minIndexList);
 		minIndexList.add(index, priority);
+	}
+
+	private void minIndexListRemove(Integer priority) { // O(log n )
+		int index = binarySearch(priority, minIndexList);
+		minIndexList.remove(index);
 	}
 
 	@Override
@@ -74,14 +79,14 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			hashmap.get(oldpriority).remove(oldObj);
 
-			minIndexList.remove((Object) oldpriority);
+			minIndexListRemove(oldpriority);
 
 		}
 		add(newObj, newpriorit);
 
 	}
 
-	public int binarySearch(int key, ArrayList<Integer> tomb) {
+	private int binarySearch(int key, ArrayList<Integer> tomb) {
 		int low = 0;
 		int high = tomb.size() - 1;
 
