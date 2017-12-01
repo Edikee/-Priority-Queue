@@ -7,12 +7,7 @@ import org.junit.Test;
 
 public class UnitTestPriorityQueue {
 
-	@Test
-	public void isEmpty_EmptyIsTrue_True() {
-		PriorityQueue pq = new PriorityQueue();
-		Assert.assertEquals(pq.isEmpty(), true);
-	}
-
+ 
 	@Test
 	public void isEmpty_EmptyIsFalse_True() {
 		FakePriorityQueue fpq = new FakePriorityQueue();
@@ -21,11 +16,11 @@ public class UnitTestPriorityQueue {
 
 	@Test
 	public void getFirst_getMinisFakeNode5_True() {
+		
 		FakePriorityQueue fpq = new FakePriorityQueue();
 		Node fn = fpq.getFirst();
-		Node fnn = fpq.getFirst();
+		 
 		Assert.assertEquals(fn.getContain(), 6);
-		Assert.assertEquals(fnn.getContain(), 5);
 
 	}
 
