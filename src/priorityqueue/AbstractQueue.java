@@ -1,14 +1,15 @@
 package priorityqueue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public abstract class AbstractQueue<E> implements Queue<E> {
-	protected Map<Integer, List<E>> hashmap;
+	protected Map<Integer, ArrayList<E>> hashmap;
 
 	public AbstractQueue() {
-		hashmap = new TreeMap<Integer, List<E>>();
+		hashmap = new TreeMap<Integer, ArrayList<E>>();
 
 	}
 

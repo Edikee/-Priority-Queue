@@ -24,14 +24,14 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 		synchronized (lock) {
 
-			List<?> tmpList = hashmap.get(priorityNumber);
+			ArrayList<E> tmpList = hashmap.get(priorityNumber);
 			if (tmpList != null) {
 
 				hashmap.get(priorityNumber).add(obj);
 
 			} else {
 
-				List<E> newList = new LinkedList<E>();
+				ArrayList<E> newList = new ArrayList<E>();
 				newList.add(obj);
 				hashmap.put(priorityNumber, newList);
 
@@ -46,7 +46,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	public E getFirst() { // O(log n )
 		E value = null;
 
-		List<E> list = null;
+		ArrayList<E> list = null;
 		int minPriority;
 		synchronized (lock) {
 
@@ -62,7 +62,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	public void remove(int priority, E obj) {
-		List<E> list = null;
+		ArrayList<E> list = null;
 		synchronized (lock) {
 			list = hashmap.get(priority);
 			list.remove(obj);
