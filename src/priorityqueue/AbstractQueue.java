@@ -6,22 +6,19 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public abstract class AbstractQueue<E> implements Queue<E> {
-	protected Map<Integer, ArrayList<E>> hashmap;
+	protected Map<Integer, ArrayList<E>> map;
 
 	public AbstractQueue() {
-		hashmap = new TreeMap<Integer, ArrayList<E>>();
+		map = new TreeMap<Integer, ArrayList<E>>();
 
 	}
 
 	public boolean isEmpty() { // O(1)
 
-		for (Integer key : hashmap.keySet()) {
-
-			if (hashmap.get(key).size() > 0) {
-				return false;
-			}
+		if (map.isEmpty()) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
