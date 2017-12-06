@@ -21,4 +21,13 @@ public abstract class AbstractQueue<E> implements Queue<E> {
 		return false;
 	}
 
+	public boolean contains(E obj) {
+		for (Integer index : map.keySet()) {
+			if (map.get(index).contains(obj)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

@@ -6,4 +6,6 @@ public interface Queue<E> {
 	public E getFirst();
 
 	public boolean isEmpty();
+
+	public boolean contains(E obj);
 }

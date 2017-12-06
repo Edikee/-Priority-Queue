@@ -54,20 +54,21 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	}
 
-	public void remove(int priority, E obj) { // O(1)
+	public boolean remove(int priority, E obj) { // O(1)
 
 		ArrayList<E> list = null;
-
+		boolean value = false;
 		synchronized (lock) {
 
 			list = map.get(priority);
-			list.remove(obj);
+			value = list.remove(obj);
 
 			if (list.size() == 0) { // if the list is empty
 									// remove the key
 				map.remove(priority);
 			}
 		}
+		return value;
 	}
 
 	public void changePriority(E oldObj, int oldPriority, E newObj, int newPriorit) {
