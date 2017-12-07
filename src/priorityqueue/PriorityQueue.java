@@ -5,10 +5,10 @@ import java.util.LinkedList;
 public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	private Object lock = new Object();
-	private LinkedList<Integer> priorityList;
+	private LinkedList<Integer> sortedListSet;
 
 	public PriorityQueue() {
-		priorityList = new LinkedList<Integer>();
+		sortedListSet = new LinkedList<Integer>();
 	}
 
 	@Override
@@ -17,8 +17,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		return add(obj, 1);
 	}
 
-	public boolean add(E obj, Integer priorityNumber) { // O(log n)
-
+	public boolean add(E obj, Integer priorityNumber) { 
+		// O(log k) where k is the hashMap size
 		synchronized (lock) {
 
 			LinkedList<E> list = hashMap.get(priorityNumber);
@@ -29,7 +29,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			}
 
-			binaryAdd(priorityNumber, priorityList);
+			binaryAdd(priorityNumber, sortedListSet);
 			list.addLast(obj);
 
 		}
@@ -47,7 +47,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 		synchronized (lock) {
 
-			minPriority = priorityList.getFirst();
+			minPriority = sortedListSet.getFirst();
 			list = hashMap.get(minPriority);
 
 			first = list.getFirst();
@@ -56,7 +56,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 			if (list.size() == 0) {
 
 				hashMap.remove(minPriority);
-				priorityList.removeFirst();
+				sortedListSet.removeFirst();
 
 			}
 		}
@@ -66,7 +66,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	}
 
 	public boolean remove(int priority, E obj) {
-		// O(log n)
+		// O(log k) where k is the hashMap size
 
 		LinkedList<E> list = null;
 		boolean value = false;
@@ -77,14 +77,14 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			if (list.size() == 0) {
 				hashMap.remove(priority);
-				binaryRemove(priority, priorityList);
+				binaryRemove(priority, sortedListSet);
 			}
 		}
 		return value;
 	}
 
 	public void changePriority(E oldObj, int oldPriority, E newObj, int newPriorit) {
-		// O(log n)
+		// O(log k) where k is the hashMap size
 
 		remove(oldPriority, oldObj);
 		add(newObj, newPriorit);
