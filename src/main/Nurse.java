@@ -1,7 +1,5 @@
 package main;
-
-import javax.swing.plaf.synth.SynthSplitPaneUI;
-
+ 
 import priorityqueue.*;
 
 public class Nurse extends Person implements Runnable {
