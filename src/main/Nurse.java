@@ -1,5 +1,5 @@
 package main;
- 
+
 import priorityqueue.*;
 
 public class Nurse extends Person implements Runnable {

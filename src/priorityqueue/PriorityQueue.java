@@ -29,7 +29,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			}
 
-			binarySearchAdd(priorityNumber, priorityList);
+			binaryAdd(priorityNumber, priorityList);
 			list.addLast(obj);
 
 		}
@@ -50,7 +50,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 			minPriority = priorityList.getFirst();
 			list = hashMap.get(minPriority);
 
-			first = list.get(0);
+			first = list.getFirst();
 			list.removeFirst();
 
 			if (list.size() == 0) {
@@ -77,7 +77,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 			if (list.size() == 0) {
 				hashMap.remove(priority);
-				priorityList.remove((Integer) priority);
+				binaryRemove(priority, priorityList);
 			}
 		}
 		return value;
@@ -91,7 +91,7 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 	}
 
-	public boolean binarySearchAdd(int key, LinkedList<Integer> list) {
+	public boolean binaryAdd(int key, LinkedList<Integer> list) {
 		// O(log n)
 		int low = 0;
 		int high = list.size() - 1;
@@ -111,6 +111,29 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 
 		list.add(low, key);
 		return true;
+
+	}
+
+	public boolean binaryRemove(int key, LinkedList<Integer> list) {
+		// O(log n)
+		int low = 0;
+		int high = list.size() - 1;
+
+		while (high >= low) {
+			int middle = (low + high) / 2;
+			if (list.get(middle) == key) {
+				list.remove(middle);
+				return true;
+			}
+			if (list.get(middle) < key) {
+				low = middle + 1;
+			}
+			if (list.get(middle) > key) {
+				high = middle - 1;
+			}
+		}
+
+		return false;
 
 	}
 }
