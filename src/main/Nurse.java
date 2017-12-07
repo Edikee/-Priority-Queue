@@ -8,7 +8,7 @@ public class Nurse extends Person implements Runnable {
 
 	public Nurse(String name) {
 		super(name);
-		prque = new PriorityQueue<Patient>();
+		prque = new PriorityQueue<Patient>(21);
 		recordId = 0;
 	}
 

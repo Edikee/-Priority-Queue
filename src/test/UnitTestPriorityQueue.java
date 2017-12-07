@@ -15,7 +15,7 @@ public class UnitTestPriorityQueue {
 	@Before
 	public void setUp() {
 
-		priorityQueue = new PriorityQueue<String>();
+		priorityQueue = new PriorityQueue<String>(6);
 
 		// add(E obj, Integer priorityNumber)
 		priorityQueue.add("2", 2);
@@ -29,13 +29,6 @@ public class UnitTestPriorityQueue {
 
 		priorityQueue.add("5", 5);
 		priorityQueue.add("55", 5);
-
-		priorityList = new LinkedList<Integer>();
-
-		for (int i = 0; i < 10; i = i + 2) {
-			priorityList.addLast(i);
-
-		}
 
 	}
 
@@ -98,42 +91,18 @@ public class UnitTestPriorityQueue {
 	}
 
 	@Test
-	public void binaryAdd_Add5_True() {
-
-		Assert.assertEquals(priorityList.contains(5), false);
-		Assert.assertEquals(priorityQueue.binaryAdd(5, priorityList), true);
-		Assert.assertEquals(priorityList.contains(5), true);
-	}
-
-	@Test
-	public void binaryAdd_Add4_False() {
-
-		Assert.assertEquals(priorityList.contains(4), true);
-		Assert.assertEquals(priorityQueue.binaryAdd(4, priorityList), false);
-
-	}
-
-	@Test
-	public void binaryRemove_Remove2_True() {
-
-		Assert.assertEquals(priorityList.contains(2), true);
-		Assert.assertEquals(priorityQueue.binaryRemove(2, priorityList), true);
-		Assert.assertEquals(priorityList.contains(2), false);
-
-	}
-
-	@Test
-	public void binaryRemove_Remove3_False() {
-
-		Assert.assertEquals(priorityList.contains(3), false);
-		Assert.assertEquals(priorityQueue.binaryRemove(3, priorityList), false);
-	}
-
-	@Test
 	public void changePriorityAndgetFirst_getFirstIs2Then1_True() {
 		Assert.assertEquals(priorityQueue.getFirst(), "2");
 		// changePriority(E oldObj, int oldPriority, E newObj, int newPriorit)
 		priorityQueue.changePriority("33", 3, "33", 1);
 		Assert.assertEquals(priorityQueue.getFirst(), "33");
+	}
+
+	@Test
+	public void reSize_reSizeIs10_True() {
+		Assert.assertEquals(priorityQueue.size(), 6);
+		priorityQueue.add("55", 9);
+		Assert.assertEquals(priorityQueue.size(), 10);
+
 	}
 }
