@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public abstract class AbstractQueue<E> implements Queue<E> {
+
 	protected Map<Integer, LinkedList<E>> hashMap;
 	protected int elementsCount;
 
@@ -42,7 +43,6 @@ public abstract class AbstractQueue<E> implements Queue<E> {
 		}
 
 		hashMap = reSizedMap;
-
 	}
 
 	public boolean isEmpty() { // O(1)
@@ -63,7 +63,6 @@ public abstract class AbstractQueue<E> implements Queue<E> {
 				return true;
 			}
 		}
-
 		return false;
 	}
 

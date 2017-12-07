@@ -3,16 +3,19 @@ package main;
 import priorityqueue.*;
 
 public class Nurse extends Person implements Runnable {
+
 	private PriorityQueue<Patient> prque;
 	private int recordId;
 
 	public Nurse(String name) {
+
 		super(name);
 		prque = new PriorityQueue<Patient>(21);
 		recordId = 0;
 	}
 
 	public void record(Patient patient) {
+
 		patient.setrecordId(recordId);
 		int priority = getPriority(patient.getComplain());
 
@@ -21,13 +24,16 @@ public class Nurse extends Person implements Runnable {
 	}
 
 	public Patient getPatient() {
+
 		return prque.getFirst();
 	}
 
 	public int getPriority(String complain) {
+
 		int priority = 30;
 
 		switch (complain) {
+
 		case "collapse":
 			priority = 2;
 			break;
@@ -47,12 +53,12 @@ public class Nurse extends Person implements Runnable {
 			priority = 10;
 			break;
 		}
-
 		return priority;
 
 	}
 
 	public void event(Patient patient, String event) {
+
 		int newPriority = getPriority(event);
 		int oldPriority = getPriority(patient.getComplain());
 
@@ -64,16 +70,19 @@ public class Nurse extends Person implements Runnable {
 	}
 
 	public boolean isEmpty() {
+
 		return prque.isEmpty();
 	}
 
 	@Override
 	public void run() {
+
 		for (int i = 0; i < 30; i++) {
 
 			try {
 				Thread.sleep(500);
 				String complain = "";
+
 				switch (recordId % 4) {
 				case 0:
 					complain = "shoot";
@@ -93,6 +102,7 @@ public class Nurse extends Person implements Runnable {
 				p.setrecordId(recordId);
 				System.out.println("Nurse record " + p.getPersonName() + " with " + p.getComplain());
 				this.record(p);
+
 				if (i % 10 == 1) {
 					this.event(p, "stop breath");
 					System.out.println("Warning!!" + p.getPersonName() + " stop breath " + "Warning!!");

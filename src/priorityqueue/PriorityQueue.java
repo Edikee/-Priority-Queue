@@ -7,8 +7,8 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 	private Object lock = new Object();
 
 	public PriorityQueue(int size) {
-		super(size);
 
+		super(size);
 	}
 
 	@Override
@@ -54,11 +54,11 @@ public class PriorityQueue<E> extends AbstractQueue<E> {
 		synchronized (lock) {
 
 			while (minPriority == -1) {
+
 				if (hashMap.get(index).size() != 0) {
 
 					minPriority = index;
 				}
-
 				index++;
 			}
 
